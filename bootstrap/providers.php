@@ -2,5 +2,5 @@
 
 return [
     App\Providers\AppServiceProvider::class,
-    \Modules\KsAuth\Providers\KsAuthProvider::class
+    \Modules\KsAuth\Providers\KsAuthServiceProviders::class
 ];
