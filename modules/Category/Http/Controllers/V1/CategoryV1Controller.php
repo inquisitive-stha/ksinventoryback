@@ -11,8 +11,8 @@ use Modules\Category\Actions\CategoryIndexAction;
 use Modules\Category\Actions\CategoryShowAction;
 use Modules\Category\Actions\CategoryUpdateAction;
 use Modules\Category\DTO\CreateCategoryActionDTO;
-use Modules\Category\Requests\CategoryV1Request;
-use Modules\Category\Resource\CategoryV1Resource;
+use Modules\Category\Http\Requests\CategoryV1Request;
+use Modules\Category\Http\Resource\CategoryV1Resource;
 
 class CategoryV1Controller extends Controller
 {
