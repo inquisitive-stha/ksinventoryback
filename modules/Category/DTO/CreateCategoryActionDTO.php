@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\DTO;
+namespace Modules\Category\DTO;
 
 class CreateCategoryActionDTO
 {

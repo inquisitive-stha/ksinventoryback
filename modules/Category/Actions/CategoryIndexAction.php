@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Actions;
+namespace Modules\Category\Actions;
 
 use App\Models\Category;
 use Modules\Category\Resource\CategoryV1Resource;

@@ -1,10 +1,10 @@
 <?php
 
-namespace Modules\Actions;
+namespace Modules\Category\Actions;
 
 use App\Models\Category;
 use Illuminate\Support\Str;
-use Modules\DTO\CreateCategoryActionDTO;
+use Modules\Category\DTO\CreateCategoryActionDTO;
 
 class CategoryCreateAction
 {

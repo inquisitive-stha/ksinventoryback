@@ -1,21 +1,20 @@
 <?php
 
-namespace Modules\Warehouse\Http\Controllers\V1;
+namespace Modules\Category\Http\Controllers\V1;
 
 use App\Http\Controllers\Controller;
-use App\Models\Category;
 use App\Traits\ApiResponses;
 use Illuminate\Http\Request;
-use Modules\Actions\CategoryCreateAction;
-use Modules\Actions\CategoryDeleteAction;
-use Modules\Actions\CategoryIndexAction;
-use Modules\Actions\CategoryShowAction;
-use Modules\Actions\CategoryUpdateAction;
+use Modules\Category\Actions\CategoryCreateAction;
+use Modules\Category\Actions\CategoryDeleteAction;
+use Modules\Category\Actions\CategoryIndexAction;
+use Modules\Category\Actions\CategoryShowAction;
+use Modules\Category\Actions\CategoryUpdateAction;
+use Modules\Category\DTO\CreateCategoryActionDTO;
 use Modules\Category\Requests\CategoryV1Request;
 use Modules\Category\Resource\CategoryV1Resource;
-use Modules\DTO\CreateCategoryActionDTO;
 
-class CategoryController extends Controller
+class CategoryV1Controller extends Controller
 {
     use ApiResponses;
     /**
