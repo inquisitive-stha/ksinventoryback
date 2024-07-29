@@ -2,16 +2,17 @@
 
 namespace Modules\Warehouse\Http\Controllers\V1;
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Api\V1\BaseApiController;
 use Illuminate\Http\Request;
-use Modules\Warehouse\Http\Resources\WarehouseResource;
+use Modules\Warehouse\Http\Filters\V1\WarehouseV1Filter;
+use Modules\Warehouse\Http\Resources\V1\WarehouseV1Resource;
 use Modules\Warehouse\Models\Warehouse;
 
-class WarehouseV1Controller extends Controller
+class WarehouseV1Controller extends BaseApiController
 {
-    public function index()
+    public function index(WarehouseV1Filter $filters)
     {
-        return WarehouseResource::collection(Warehouse::paginate(10));
+        return WarehouseV1Resource::collection(Warehouse::filter($filters)->paginate());
     }
 
     public function create()
@@ -24,7 +25,7 @@ class WarehouseV1Controller extends Controller
 
     public function show($id)
     {
-        return new WarehouseResource(Warehouse::find($id));
+        return new WarehouseV1Resource(Warehouse::find($id));
     }
 
     public function edit($id)
