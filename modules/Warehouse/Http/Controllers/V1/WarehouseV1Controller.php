@@ -15,12 +15,9 @@ class WarehouseV1Controller extends BaseApiController
         return WarehouseV1Resource::collection(Warehouse::filter($filters)->paginate());
     }
 
-    public function create()
-    {
-    }
-
     public function store(Request $request)
     {
+
     }
 
     public function show($id)
