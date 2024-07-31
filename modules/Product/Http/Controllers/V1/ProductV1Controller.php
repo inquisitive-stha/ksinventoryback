@@ -14,15 +14,17 @@ use Modules\Product\DTO\CreateProductActionDTO;
 use Modules\Product\Requests\ProductV1Request;
 use Modules\Product\Resource\ProductV1Resource;
 
-class CategoryV1Controller extends Controller
+class ProductV1Controller extends Controller
 {
     use ApiResponses;
+
     /**
      * Display a listing of the resource.
      */
     public function index(Request $request)
     {
-        return $this->ok('Categories fetched successfully', app(ProductIndexAction::class)->execute($request->all()));
+        $products = app(ProductIndexAction::class)->execute($request->all());
+        return $this->ok('Products retrieved successfully', ProductV1Resource::collection($products));
     }
 
     /**
@@ -30,8 +32,8 @@ class CategoryV1Controller extends Controller
      */
     public function store(ProductV1Request $request)
     {
-        return new ProductV1Resource(app(ProductCreateAction::class)->execute(new CreateProductActionDTO($request->all())));
-
+        $product = app(ProductCreateAction::class)->execute(new CreateProductActionDTO($request->all()));
+        return $this->ok('Product created successfully', new ProductV1Resource($product));
     }
 
     /**
@@ -39,7 +41,8 @@ class CategoryV1Controller extends Controller
      */
     public function show($id)
     {
-        return new ProductV1Resource(app(ProductShowAction::class)->execute($id));
+        $product = app(ProductShowAction::class)->execute($id);
+        return $this->ok('Product retrieved successfully', new ProductV1Resource($product));
     }
 
     /**
@@ -47,14 +50,17 @@ class CategoryV1Controller extends Controller
      */
     public function update(ProductV1Request $request, $id)
     {
-        return new ProductV1Resource(app(ProductUpdateAction::class)->execute($id, $request->all()));
+        $productDTO = new CreateProductActionDTO($request->validated());
+        $product = app(ProductUpdateAction::class)->execute($id, $productDTO);
+        return $this->ok('Product updated successfully', new ProductV1Resource($product));
     }
 
+    /**
+     * Remove the specified resource from storage.
+     */
     public function destroy($id)
     {
-        app(ProductDeleteAction::class)->execute($id);
-        return $this->ok('Category deleted successfully');
+        $product = app(ProductDeleteAction::class)->execute($id);
+        return $this->ok('Product deleted successfully');
     }
-
-
 }

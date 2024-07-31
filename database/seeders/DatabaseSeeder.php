@@ -27,7 +27,7 @@ class DatabaseSeeder extends Seeder
         //create Warehouse Seeder
         //$warehouses = WarehouseFactory::new()->count(50)->create();
 
-        Category::factory(10)->create();
+        Category::factory(20)->create();
         Product::factory(10)->create();
 
         

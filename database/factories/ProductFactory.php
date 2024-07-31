@@ -22,7 +22,7 @@ class ProductFactory extends Factory
         return [
             'title' => $this->faker->sentence(3),
             'description' => $this->faker->paragraph(),
-            'sku' => $this->faker->unique()->numberBetween(1000, 9999),
+            'sku' => $this->faker->unique()->numberBetween(1, 9999),
             'category_id' => $this->faker->randomElement($categoryIds),
         ];
     }

@@ -12,7 +12,10 @@ class ProductCreateAction
     {
         return Product::create([
             'title' => $actionDTO->title,
-            'slug' => Str::slug($actionDTO->title)
+            'description' => $actionDTO->description,
+            'sku' => $actionDTO->sku,
+            'category_id' => $actionDTO->category_id,
+            'brand_id' => $actionDTO->brand_id, 
         ]);
     }
 }

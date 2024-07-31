@@ -1,10 +1,10 @@
 <?php
 
-namespace Modules\Category\Providers;
+namespace Modules\Product\Providers;
 
 use Carbon\Laravel\ServiceProvider;
 
-class CategoryServiceProvider extends ServiceProvider
+class ProductServiceProvider extends ServiceProvider
 {
     public function register()
     {
@@ -12,6 +12,8 @@ class CategoryServiceProvider extends ServiceProvider
     }
     public function boot()
     {
-        $this->loadRoutesFrom(__DIR__.'/../routes/category_route.php');
+        // dd('hit');
+
+        $this->loadRoutesFrom(__DIR__.'/../routes/product_route.php');
     }
 }

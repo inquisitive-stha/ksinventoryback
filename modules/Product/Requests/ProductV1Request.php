@@ -22,9 +22,16 @@ class ProductV1Request extends FormRequest
      */
     public function rules(): array
     {
-        $id = $this->route('category') ? $this->route('category') : null;
         return [
-            'title' => ['required', 'string', Rule::unique('categories')->ignore($id)],
+            'title' => 'required|string|max:255',
+            'description' => 'required|string',
+            'sku' => [
+                'required',
+                'numeric',
+                Rule::unique('products', 'sku')
+            ],
+            'category_id' => 'required|exists:categories,id',
+            'brand_id' => 'nullable',
         ];
     }
 }

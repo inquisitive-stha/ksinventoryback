@@ -3,17 +3,23 @@
 namespace Modules\Product\Actions;
 
 use App\Models\Product;
-use Illuminate\Support\Str;
+use Modules\Product\DTO\CreateProductActionDTO;
 
 class ProductUpdateAction
 {
-    public function execute($id, $data)
+    public function execute($id, CreateProductActionDTO $actionDTO)
     {
+        
         $product = Product::findOrFail($id);
-        $product->title = $data['title'];
-        $product->slug = Str::slug($data['title']);
-        $product->updated_at = now();
-        $product->save();
+
+        $product->update([
+            'title' => $actionDTO->title,
+            'description' => $actionDTO->description,
+            'sku' => $actionDTO->sku,
+            'category_id' => $actionDTO->category_id,
+            'brand_id' => $actionDTO->brand_id,
+        ]);
+
         return $product;
     }
 }

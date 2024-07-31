@@ -8,6 +8,11 @@ class ProductDeleteAction
 {
     public function execute($id)
     {
-        return Product::where('id',$id)->delete();
+        
+        $product = Product::findOrFail($id);
+        
+        $product->delete();
+
+        return $product; 
     }
 }

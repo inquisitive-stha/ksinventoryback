@@ -17,7 +17,10 @@ class ProductV1Resource extends JsonResource
         return [
             'id' => $this->id,
             'title' => $this->title,
-            'slug' => $this->slug
+            'description' => $this->description,
+            'sku' => $this->sku,
+            'category_id' => $this->category_id,
+            'brand_id' => $this->brand_id,
         ];
     }
 }

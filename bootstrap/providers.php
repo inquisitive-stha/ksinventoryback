@@ -5,4 +5,6 @@ return [
     \Modules\KsAuth\Providers\KsAuthServiceProviders::class,
     \Modules\Warehouse\Providers\WarehouseServiceProvider::class,
     \Modules\Category\Providers\CategoryServiceProvider::class,
+    \Modules\Product\Providers\ProductServiceProvider::class,
+
 ];
