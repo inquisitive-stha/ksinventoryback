@@ -10,8 +10,8 @@ use Modules\Category\Actions\CategoryDeleteAction;
 use Modules\Category\Actions\CategoryIndexAction;
 use Modules\Category\Actions\CategoryShowAction;
 use Modules\Category\Actions\CategoryUpdateAction;
-use Modules\Category\DTO\CreateCategoryActionDTO;
-use Modules\Category\Requests\CategoryV1Request;
+use Modules\Category\DTO\CreateCustomerActionDTO;
+use Modules\Category\Requests\CustomerV1Request;
 use Modules\Category\Resource\CategoryV1Resource;
 
 class CategoryV1Controller extends Controller
@@ -28,9 +28,9 @@ class CategoryV1Controller extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(CategoryV1Request $request)
+    public function store(CustomerV1Request $request)
     {
-        return new CategoryV1Resource(app(CategoryCreateAction::class)->execute(new CreateCategoryActionDTO($request->all())));
+        return new CategoryV1Resource(app(CategoryCreateAction::class)->execute(new CreateCustomerActionDTO($request->all())));
 
     }
 
@@ -45,7 +45,7 @@ class CategoryV1Controller extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(CategoryV1Request $request, $id)
+    public function update(CustomerV1Request $request, $id)
     {
         return new CategoryV1Resource(app(CategoryUpdateAction::class)->execute($id, $request->all()));
     }
