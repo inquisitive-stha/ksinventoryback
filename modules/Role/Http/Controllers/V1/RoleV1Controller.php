@@ -22,8 +22,8 @@ class RoleV1Controller extends Controller
     {
         $roles = Role::all();
 
-        return response()->json([
-            'roles' => $roles
+        return $this->ok('Roles retrieved successfully', [
+            'roles' => RoleV1Resource::collection($roles)
         ]);
     }
 
@@ -33,9 +33,8 @@ class RoleV1Controller extends Controller
     public function store(RoleV1Request $request)
     {
         $role = app(RoleStoreAction::class)->execute(new CreateRoleActionDTO($request->all()));
-        return response()->json([
-               'message' => 'Role added successfully',
-               'role'   => new RoleV1Resource($role)
+        return $this->ok('Role added successfully', [
+            'role' => new RoleV1Resource($role)
         ]);
 
         //ok wala haalne
@@ -62,10 +61,9 @@ class RoleV1Controller extends Controller
     {
         
         $role= app(RoleUpdateAction::class)->execute($id,$request->all());
-        return response()->json([
-            'message' => 'Role updated successfully',
-            'role'   => new RoleV1Resource($role)
-     ]);
+        return $this->ok('Role updated successfully', [
+            'role' => new RoleV1Resource($role)
+        ]);
 
        
 }
@@ -74,10 +72,9 @@ class RoleV1Controller extends Controller
     public function destroy($id)
     {
         app(RoleDeleteAction::class)->execute($id);
-        return response()->json([
-            'message' => 'Role deleted successfully'
+        return $this->ok('Category deleted successfully');
             
-     ]);
+     
 
     }
 
