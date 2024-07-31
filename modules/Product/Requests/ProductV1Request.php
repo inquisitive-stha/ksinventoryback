@@ -31,7 +31,9 @@ class ProductV1Request extends FormRequest
                 Rule::unique('products', 'sku')
             ],
             'category_id' => 'required|exists:categories,id',
-            'brand_id' => 'nullable',
+            'brand_id' => 'required|exists:brands,id',
+            
+            //'brand_id' => 'nullable',
         ];
     }
 }
