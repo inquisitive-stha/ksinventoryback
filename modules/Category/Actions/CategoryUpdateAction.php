@@ -2,18 +2,18 @@
 
 namespace Modules\Category\Actions;
 
-use App\Models\Category;
 use Illuminate\Support\Str;
+use Modules\Category\DTO\CategoryUpdateActionDTO;
+use Modules\Category\Models\Category;
 
 class CategoryUpdateAction
 {
-    public function execute($id, $data)
+    public function execute(CategoryUpdateActionDTO $dto, Category|int $category)
     {
-        $category = Category::findOrFail($id);
-        $category->title = $data['title'];
-        $category->slug = Str::slug($data['title']);
-        $category->updated_at = now();
-        $category->save();
+        if(!$category instanceof Category) {
+            $category = Category::query()->findOrFail($category);
+        }
+        $category->update(collect($dto)->toArray());
         return $category;
     }
 }

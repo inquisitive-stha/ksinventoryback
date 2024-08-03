@@ -2,17 +2,13 @@
 
 namespace Modules\Category\Actions;
 
-use App\Models\Category;
-use Illuminate\Support\Str;
-use Modules\Category\DTO\CreateCategoryActionDTO;
+use Modules\Category\DTO\CategoryCreateActionDTO;
+use Modules\Category\Models\Category;
 
 class CategoryCreateAction
 {
-    public function execute(CreateCategoryActionDTO $actionDTO)
+    public function execute(CategoryCreateActionDTO $dto)
     {
-        return Category::create([
-            'title' => $actionDTO->title,
-            'slug' => Str::slug($actionDTO->title)
-        ]);
+        return Category::query()->create(collect($dto)->toArray());
     }
 }

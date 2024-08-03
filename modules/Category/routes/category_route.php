@@ -1,13 +1,14 @@
 <?php
 
+use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Support\Facades\Route;
-use Modules\Category\Http\Controllers\V1\CategoryV1Controller;
+use Modules\Category\Http\Controllers\V1\CategoryController;
 
-Route::group(['prefix' => 'api', 'as' => 'api.'], function () {
+Route::group(['prefix' => 'api', 'as' => 'api.', 'middleware' => ['auth:sanctum', SubstituteBindings::class]], function () {
 
     Route::group(['prefix' => 'v1', 'as' => 'v1.'], function () {
 
-        Route::resource('categories', CategoryV1Controller::class);
+        Route::apiResource('categories', CategoryController::class);
 
     });
 
