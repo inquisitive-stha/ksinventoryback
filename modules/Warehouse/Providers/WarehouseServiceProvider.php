@@ -13,9 +13,10 @@ class WarehouseServiceProvider extends ServiceProvider
 
     public function boot()
     {
+
         $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
 //        $this->mergeConfigFrom(__DIR__.'/../config/config.php', 'ksAuth');
-        $this->loadRoutesFrom(__DIR__.'/../routes/api.php');
+        $this->loadRoutesFrom(__DIR__.'/../routes/warehouse_route.php');
 //        $this->loadViewsFrom(__DIR__ . '/../views', 'ksAuth');
 
     }

@@ -1,10 +1,9 @@
 <?php
 
-namespace Modules\Warehouse\Http\Resources;
+namespace Modules\Warehouse\Http\Resources\V1;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
-use phpDocumentor\Reflection\Types\Parent_;
 
 class WarehouseResource extends JsonResource
 {
@@ -23,7 +22,7 @@ class WarehouseResource extends JsonResource
                 'updated_at' => $this->updated_at,
             ],
             'links' => [
-                'self' => route('api.v1.warehouses.show', $this->id),
+                'self' => route('api.v1.warehouses.show', ['warehouse' => $this->id]),
             ],
         ];
     }

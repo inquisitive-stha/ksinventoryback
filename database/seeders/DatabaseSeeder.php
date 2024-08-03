@@ -3,11 +3,12 @@
 namespace Database\Seeders;
 
 use App\Models\Brand;
-use App\Models\Category;
 use App\Models\User;
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Modules\Category\Models\Category;
 use Modules\Warehouse\database\factories\WarehouseFactory;
+
+// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class DatabaseSeeder extends Seeder
 {
@@ -25,7 +26,7 @@ class DatabaseSeeder extends Seeder
         $users = User::factory(9)->create();
 
         //create Warehouse Seeder
-        //$warehouses = WarehouseFactory::new()->count(50)->create();
+        $warehouses = WarehouseFactory::new()->count(50)->create();
 
         Category::factory(10)->create();
         Brand::factory(10)->create();

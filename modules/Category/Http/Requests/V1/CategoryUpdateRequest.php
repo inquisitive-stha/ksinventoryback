@@ -1,11 +1,10 @@
 <?php
 
-namespace Modules\Category\Requests;
+namespace Modules\Category\Http\Requests\V1;
 
-use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class CategoryV1Request extends FormRequest
+class CategoryUpdateRequest extends BaseCategoryRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,9 +21,12 @@ class CategoryV1Request extends FormRequest
      */
     public function rules(): array
     {
-        $id = $this->route('category') ? $this->route('category') : null;
         return [
-            'title' => ['required', 'string', Rule::unique('categories')->ignore($id)],
+            'data.attributes.title' => [
+                'sometimes',
+                'string',
+                Rule::unique('categories','title')->ignore($this->route('category')),
+            ]
         ];
     }
 }
