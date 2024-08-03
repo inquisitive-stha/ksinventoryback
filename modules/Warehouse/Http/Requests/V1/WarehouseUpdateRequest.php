@@ -2,7 +2,6 @@
 
 namespace Modules\Warehouse\Http\Requests\V1;
 
-use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
 class WarehouseUpdateRequest extends BaseWarehouseRequest

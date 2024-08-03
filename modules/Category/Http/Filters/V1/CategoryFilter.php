@@ -1,18 +1,14 @@
 <?php
 
-namespace Modules\Warehouse\Http\Filters\V1;
+namespace Modules\Category\Http\Filters\V1;
 
 use App\Http\Filters\V1\QueryFilter;
 
-class WarehouseFilter extends QueryFilter
+class CategoryFilter extends QueryFilter
 {
-
     protected $sortable = [
-        'name',
+        'title',
         'slug',
-        'address',
-        'phone',
-        'email',
         'created_at' => 'created_at',
         'updated_at' => 'updated_at'
     ];
@@ -22,28 +18,16 @@ class WarehouseFilter extends QueryFilter
         return $this->builder->with($value);
     }
 
-    public function name($value)
+    public function title($value)
     {
         $likeStr = str_replace('*', '%', $value);
-        return $this->builder->where('name', 'like', $likeStr);
+        return $this->builder->where('title', 'like', $likeStr);
     }
 
-    public function address($value)
+    public function slug($value)
     {
         $likeStr = str_replace('*', '%', $value);
-        return $this->builder->where('address', 'like', $likeStr);
-    }
-
-    public function phone($value)
-    {
-        $likeStr = str_replace('*', '%', $value);
-        return $this->builder->where('phone', 'like', $likeStr);
-    }
-
-    public function email($value)
-    {
-        $likeStr = str_replace('*', '%', $value);
-        return $this->builder->where('phone', 'like', $likeStr);
+        return $this->builder->where('slug', 'like', $likeStr);
     }
 
     public function created_at($value)
@@ -67,5 +51,4 @@ class WarehouseFilter extends QueryFilter
 
         return $this->builder->whereDate('updated_at', $value);
     }
-
 }

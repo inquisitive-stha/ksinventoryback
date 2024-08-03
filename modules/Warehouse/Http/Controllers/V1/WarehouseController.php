@@ -5,7 +5,6 @@ namespace Modules\Warehouse\Http\Controllers\V1;
 use App\Http\Controllers\Api\V1\BaseApiController;
 use App\Traits\ApiResponses;
 use Modules\Warehouse\Actions\WarehouseCreateAction;
-use Modules\Warehouse\Actions\WarehouseDeleteAction;
 use Modules\Warehouse\Actions\WarehouseUpdateAction;
 use Modules\Warehouse\DTO\WarehouseCreateActionDTO;
 use Modules\Warehouse\DTO\WarehouseUpdateActionDTO;
@@ -49,7 +48,7 @@ class WarehouseController extends BaseApiController
 
     public function destroy(Warehouse $warehouse)
     {
-        app(WarehouseDeleteAction::class)->execute($warehouse);
+        $warehouse->delete();
         return $this->ok('Warehouse successfully deleted');
     }
 }
