@@ -4,7 +4,7 @@ namespace Modules\Warehouse\Http\Filters\V1;
 
 use App\Http\Filters\V1\QueryV1Filter;
 
-class WarehouseV1Filter extends QueryV1Filter
+class WarehouseFilter extends QueryV1Filter
 {
 
     protected $sortable = [

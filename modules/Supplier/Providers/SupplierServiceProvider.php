@@ -13,6 +13,6 @@ class SupplierServiceProvider extends ServiceProvider
 
     public function boot()
     {
-        dd('hit');
+
     }
 }

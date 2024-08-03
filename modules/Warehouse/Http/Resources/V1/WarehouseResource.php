@@ -5,7 +5,7 @@ namespace Modules\Warehouse\Http\Resources\V1;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class WarehouseV1Resource extends JsonResource
+class WarehouseResource extends JsonResource
 {
     public function toArray(Request $request): array
     {

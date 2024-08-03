@@ -11,6 +11,7 @@ class Warehouse extends Model
 {
     use HasFactory;
 
+    protected $primaryKey = 'id';
     protected $table = 'warehouses';
 
     protected $fillable = [
