@@ -8,7 +8,7 @@ Route::group(['prefix' => 'api', 'as' => 'api.', 'middleware' => ['auth:sanctum'
 
     Route::group(['prefix' => 'v1', 'as' => 'v1.'], function () {
 
-        Route::resource('categories', CategoryController::class);
+        Route::apiResource('categories', CategoryController::class);
 
     });
 

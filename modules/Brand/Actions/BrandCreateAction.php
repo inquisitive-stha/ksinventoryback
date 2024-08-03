@@ -2,17 +2,13 @@
 
 namespace Modules\Brand\Actions;
 
-use App\Models\Brand;
-use Illuminate\Support\Str;
-use Modules\Brand\DTO\CreateBrandActionDTO;
+use Modules\Brand\DTO\BrandCreateActionDTO;
+use Modules\Brand\Models\Brand;
 
 class BrandCreateAction
 {
-    public function execute(CreateBrandActionDTO $actionDTO)
+    public function execute(BrandCreateActionDTO $dto)
     {
-        return Brand::create([
-            'name' => $actionDTO->name,
-            'slug' => Str::slug($actionDTO->name)
-        ]);
+        return Brand::query()->create(collect($dto)->toArray());
     }
 }

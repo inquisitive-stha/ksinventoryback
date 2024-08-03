@@ -2,10 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\Brand;
 use App\Models\User;
 use Illuminate\Database\Seeder;
-use Modules\Category\Models\Category;
+use Modules\Brand\database\factories\BrandFactory;
+use Modules\Category\database\factories\CategoryFactory;
 use Modules\Warehouse\database\factories\WarehouseFactory;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -28,7 +28,7 @@ class DatabaseSeeder extends Seeder
         //create Warehouse Seeder
         $warehouses = WarehouseFactory::new()->count(50)->create();
 
-        Category::factory(10)->create();
-        Brand::factory(10)->create();
+        CategoryFactory::new()->count(10)->create();
+        BrandFactory::new()->count(10)->create();
     }
 }

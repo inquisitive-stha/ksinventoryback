@@ -1,12 +1,14 @@
 <?php
 
-namespace Modules\Brand\Requests;
+namespace Modules\Brand\Http\Requests;
 
-use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class BrandV1Request extends FormRequest
+class BrandUpdateRequest extends BaseBrandRequest
 {
+    /**
+     * Determine if the user is authorized to make this request.
+     */
     public function authorize(): bool
     {
         return true;
@@ -19,13 +21,12 @@ class BrandV1Request extends FormRequest
      */
     public function rules(): array
     {
-        $id = $this->route('brand') ? $this->route('brand') : null;
         return [
-            'name' => [
-                'required', 
+            'data.attributes.name' => [
+                'sometimes',
                 'string',
-                Rule::unique('brands', 'name')->ignore($id),
-            ],
+                Rule::unique('brands','name')->ignore($this->route('brand')),
+            ]
         ];
     }
 }

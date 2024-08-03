@@ -2,18 +2,17 @@
 
 namespace Modules\Brand\Actions;
 
-use App\Models\Brand;
-use Illuminate\Support\Str;
+use Modules\Brand\DTO\BrandUpdateActionDTO;
+use Modules\Brand\Models\Brand;
 
 class BrandUpdateAction
 {
-    public function execute($id, $data)
+    public function execute(BrandUpdateActionDTO $dto, Brand|int $brand)
     {
-        $brand = Brand::findOrFail($id);
-        $brand->name = $data['name'];
-        $brand->slug = Str::slug($data['name']);
-        $brand->updated_at = now();
-        $brand->save();
+        if(!$brand instanceof Brand) {
+            $brand = Brand::query()->findOrFail($brand);
+        }
+        $brand->update(collect($dto)->toArray());
         return $brand;
     }
 }

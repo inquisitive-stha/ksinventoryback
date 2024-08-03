@@ -1,14 +1,16 @@
 <?php
 
-namespace Database\Factories;
+namespace Modules\Brand\database\factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Modules\Brand\Models\Brand;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Brand>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\Modules\Brand\Models\Brand>
  */
 class BrandFactory extends Factory
 {
+    protected $model = Brand::class;
     /**
      * Define the model's default state.
      *
