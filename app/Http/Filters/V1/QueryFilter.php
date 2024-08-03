@@ -15,6 +15,13 @@ abstract class QueryFilter {
         $this->request = $request;
     }
 
+    public function include($value)
+    {
+        if($value){
+            return $this->builder->with(explode(',', $value));
+        }
+    }
+
     public function apply(Builder $builder) {
         $this->builder = $builder;
         foreach($this->request->all() as $key => $value) {

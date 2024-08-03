@@ -1,18 +1,14 @@
 <?php
 
+use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Support\Facades\Route;
-use Modules\Product\Http\Controllers\V1\ProductV1Controller;
+use Modules\Product\Http\Controllers\V1\ProductController;
 
-// Route::group(['prefix' => 'api/v1', 'as' => 'api.v1.'], function () {
-//     Route::resource('products', ProductV1Controller::class);
-// });
-
-
-Route::group(['prefix' => 'api', 'as' => 'api.'], function () {
+Route::group(['prefix' => 'api', 'as' => 'api.', 'middleware' => ['auth:sanctum', SubstituteBindings::class]], function () {
 
     Route::group(['prefix' => 'v1', 'as' => 'v1.'], function () {
 
-        Route::resource('products', ProductV1Controller::class);
+        Route::apiResource('products', ProductController::class);
 
     });
 

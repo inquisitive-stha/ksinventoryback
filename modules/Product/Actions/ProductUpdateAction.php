@@ -2,24 +2,17 @@
 
 namespace Modules\Product\Actions;
 
-use App\Models\Product;
-use Modules\Product\DTO\CreateProductActionDTO;
+use Modules\Product\DTO\ProductUpdateActionDTO;
+use Modules\Product\Models\Product;
 
 class ProductUpdateAction
 {
-    public function execute($id, CreateProductActionDTO $actionDTO)
+    public function execute(ProductUpdateActionDTO $dto, Product|int $product)
     {
-        
-        $product = Product::findOrFail($id);
-
-        $product->update([
-            'title' => $actionDTO->title,
-            'description' => $actionDTO->description,
-            'sku' => $actionDTO->sku,
-            'category_id' => $actionDTO->category_id,
-            'brand_id' => $actionDTO->brand_id,
-        ]);
-
+        if(!$product instanceof Product) {
+            $product = Product::query()->findOrFail($product);
+        }
+        $product->update(collect($dto)->toArray());
         return $product;
     }
 }

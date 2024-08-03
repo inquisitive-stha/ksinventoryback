@@ -2,20 +2,13 @@
 
 namespace Modules\Product\Actions;
 
-use App\Models\Product;
-use Illuminate\Support\Str;
-use Modules\Product\DTO\CreateProductActionDTO;
+use Modules\Product\DTO\ProductCreateActionDTO;
+use Modules\Product\Models\Product;
 
 class ProductCreateAction
 {
-    public function execute(CreateProductActionDTO $actionDTO)
+    public function execute(ProductCreateActionDTO $dto)
     {
-        return Product::create([
-            'title' => $actionDTO->title,
-            'description' => $actionDTO->description,
-            'sku' => $actionDTO->sku,
-            'category_id' => $actionDTO->category_id,
-            'brand_id' => $actionDTO->brand_id, 
-        ]);
+        return Product::query()->create(collect($dto)->toArray());
     }
 }

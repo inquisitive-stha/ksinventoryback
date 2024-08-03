@@ -1,16 +1,20 @@
 <?php
 
-namespace Database\Factories;
+namespace Modules\Product\database\factories;
 
-use App\Models\Brand;
-use App\Models\Category;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Modules\Brand\Models\Brand;
+use Modules\Category\Models\Category;
+use Modules\Product\Models\Product;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Product>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\Modules\Product\Models\Product>
  */
 class ProductFactory extends Factory
 {
+
+    protected $model = Product::class;
+
     /**
      * Define the model's default state.
      *
@@ -18,8 +22,8 @@ class ProductFactory extends Factory
      */
     public function definition(): array
     {
-        $categoryIds = Category::pluck('id')->toArray();
-        $brandIds = Brand::pluck('id')->toArray();
+        $categoryIds = Category::query()->pluck('id')->toArray();
+        $brandIds = Brand::query()->pluck('id')->toArray();
 
         return [
             'title' => $this->faker->sentence(3),

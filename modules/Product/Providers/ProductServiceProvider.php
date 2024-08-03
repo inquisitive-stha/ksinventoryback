@@ -12,8 +12,7 @@ class ProductServiceProvider extends ServiceProvider
     }
     public function boot()
     {
-        // dd('hit');
-
+        $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
         $this->loadRoutesFrom(__DIR__.'/../routes/product_route.php');
     }
 }

@@ -17,11 +17,6 @@ class WarehouseFilter extends QueryFilter
         'updated_at' => 'updated_at'
     ];
 
-    public function include($value)
-    {
-        return $this->builder->with($value);
-    }
-
     public function name($value)
     {
         $likeStr = str_replace('*', '%', $value);
@@ -43,7 +38,7 @@ class WarehouseFilter extends QueryFilter
     public function email($value)
     {
         $likeStr = str_replace('*', '%', $value);
-        return $this->builder->where('phone', 'like', $likeStr);
+        return $this->builder->where('email', 'like', $likeStr);
     }
 
     public function created_at($value)
